@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kho tài liệu tổng hợp</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #ffffff, #f0f4ff);
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    background: #e6f0ff;
+}
+
+/* SUB MENU */
+.submenu {
+    display: none;
+    padding: 20px;
+}
+
+.submenu button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 18px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+}
+</style>
+
+</head>
+<body>
+
+<header>📚 Kho tài liệu tổng hợp</header>
+
+<div class="grid">
+
+<div class="card" onclick="openMenu('kt')">Kinh tế - Tài chính</div>
+<div class="card" onclick="openMenu('it')">Tin học</div>
+<div class="card" onclick="openMenu('ls')">Lịch sử</div>
+<div class="card" onclick="openMenu('dl')">Địa lý</div>
+<div class="card" onclick="openMenu('tv')">Thiên văn</div>
+
+</div>
+
+<!-- SUBMENU -->
+<div id="kt" class="submenu">
+    <h2>Kinh tế - Tài chính</h2>
+    <button onclick="openSub('economy')">Kinh tế</button>
+    <button onclick="openSub('finance')">Tài chính</button>
+</div>
+
+<div id="economy" class="submenu">
+    <h3>Kinh tế</h3>
+    <button onclick="openBook('books/economy1.pdf')">Sách Kinh tế 1</button>
+</div>
+
+<div id="finance" class="submenu">
+    <h3>Tài chính</h3>
+    <button onclick="openBook('books/finance1.pdf')">Sách Tài chính 1</button>
+</div>
+
+<footer>Designed by Nam Tran - 2025</footer>
+
+<script>
+function openMenu(id) {
+    document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+}
+
+function openSub(id) {
+    document.querySelectorAll('.submenu').forEach(el => el.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+}
+
+function openBook(file) {
+    window.open("reader.html?file=" + file, "_blank");
+}
+</script>
+
+</body>
+</html>
