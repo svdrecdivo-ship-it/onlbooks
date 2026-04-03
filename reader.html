@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Đọc sách</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+}
+
+iframe {
+    width: 100%;
+    height: 90vh;
+    border: none;
+}
+
+button {
+    padding: 10px;
+    font-size: 18px;
+}
+</style>
+
+</head>
+<body>
+
+<h2>📖 Đọc sách</h2>
+
+<iframe id="viewer"></iframe>
+
+<br><br>
+
+<button onclick="like()">❤️ Like</button>
+<p id="likeCount">0</p>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const file = urlParams.get('file');
+
+document.getElementById("viewer").src = file;
+
+let count = localStorage.getItem(file) || 0;
+document.getElementById("likeCount").innerText = count;
+
+function like() {
+    count++;
+    localStorage.setItem(file, count);
+    document.getElementById("likeCount").innerText = count;
+}
+</script>
+
+</body>
+</html>
